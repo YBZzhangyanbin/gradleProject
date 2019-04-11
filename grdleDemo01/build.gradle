@@ -50,8 +50,30 @@ def method (int a,int b){
 def methodReturn(int a,int b){
 	if (a>b) {
 		a
-		
 	}else{
 		b
 	}
 }
+
+
+//JaveBean
+class Person{
+	private String name
+
+	public int getAge(){
+		12
+	}
+	public setAge(int a){
+		a
+	}
+
+}
+task JaveBeanClass{
+	Person p=new Person()
+	p.name="张三"
+	println p.name
+	println p.age
+	p.setAge(15)
+	println p.getName()
+}
+
