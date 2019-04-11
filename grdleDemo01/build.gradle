@@ -74,6 +74,19 @@ task JaveBeanClass{
 	println p.name
 	println p.age
 	p.setAge(15)
-	println p.getName()
+	println p.age
 }
 
+task helloClosure{
+	eachMap{k,v ->
+		println "${k} is ${v}"
+	}
+}
+def eachMap (clossure){
+	def map=["name":"张三","age":18]
+	map.each{
+		clossure(it.key,it.value)
+}
+
+
+DSL (Domain Specific Language) 领域特定语言
