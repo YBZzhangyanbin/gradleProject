@@ -1,5 +1,14 @@
 task hello{
-	doLast{
-		printkn"Hello World!"
+	doLast{					//最后一个执行
+		println"Hello World!"
+		logger.quiet("debug日志")
 	}
+}
+
+task hello1{
+	logger.quiet("第二个task")
+}
+
+task hello2{
+	logger.quiet("第个task")
 }
