@@ -1,0 +1,88 @@
+final String BUILD_APP_ALL="all"
+final String BUILD_APP_SHOUFA="shoufa"
+final String BUILD_APPS_EXCLUDE_SHOUFA="exclude_shoufa"
+
+task qqTask << {
+	println "打应用宝的包"
+}
+
+task baiduTask << {
+	println "打百度的包"
+}
+
+task miuiTask << {
+	println "打小米的包"
+}
+task meiTask << {
+	println "打魅族的包"
+}
+
+task build {
+	group BasePlugin.BUILD_GROUP
+	description"打包渠道"
+}
+build.dependsOn qqTask, miuiTask, baiduTask, meiTask
+
+qqTask.onlyIf{
+	def execute=false;
+	if(project.hasProperty("build_apps")){
+		Object buildApps=project.property("build_apps")
+		if (BUILD_APP_SHOUFA.equals(buildApps)||BUILD_APP_ALL.equals(buildApps)) {
+			execute=true
+		}else{
+			execute=false
+		}
+	}else{
+		execute=false
+	}
+	execute
+}
+
+baiduTask.onlyIf{
+	def execute=false;
+	if(project.hasProperty("build_apps")){
+		Object buildApps=project.property("build_apps")
+		if (BUILD_APPS_EXCLUDE_SHOUFA.equals(buildApps)||BUILD_APP_ALL.equals(buildApps)) {
+			execute=true
+		}else{
+			execute=false
+		}
+	}else{
+		execute=true
+	}
+	execute
+}
+
+meiTask.onlyIf{
+	def execute=false;
+	if(project.hasProperty("build_apps")){
+		Object buildApps=project.property("build_apps")
+		if (BUILD_APPS_EXCLUDE_SHOUFA.equals(buildApps)||BUILD_APP_ALL.equals(buildApps)) {
+			execute=true
+		}else{
+			execute=false
+		}
+	}else{
+		execute=true
+	}
+	execute
+}
+
+miuiTask.onlyIf{
+	def execute=false;
+	if(project.hasProperty("build_apps")){
+		Object buildApps=project.property("build_apps")
+		if (BUILD_APP_SHOUFA.equals(buildApps)||BUILD_APP_ALL.equals(buildApps)) {
+			execute=true
+		}else{
+			execute=false
+		}
+	}else{
+		execute=true
+	}
+	execute
+}
+
+
+
+
