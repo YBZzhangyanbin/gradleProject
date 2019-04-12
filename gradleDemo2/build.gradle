@@ -1,0 +1,28 @@
+apply plugin:"java"
+
+ext.age=18
+ext {
+	phone=1326177
+	address="北京"
+}
+task projectProperty{
+	println "年龄是:${age}"
+	println "姓名:${address}"
+}
+
+sourceSet.all{
+	ext.resourceDir=null
+}
+sourceSet{
+	main{
+		resourceDir="source.main"
+	}
+	test{
+		resourceDir="source.test"
+	}
+}
+task projectPropertyEach{
+	sourceSet.each{
+		println "${it.name}和dir=${it.resourceDir}"
+	}
+}
