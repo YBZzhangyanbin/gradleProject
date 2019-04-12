@@ -1,0 +1,4 @@
+apply from:'version.gradle'
+task applyPluginTask{
+	println"APP${versionName}和versionName${versionCode}"
+}
